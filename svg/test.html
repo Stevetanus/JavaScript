@@ -15,31 +15,31 @@
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect id="Rectangle 1" width="120" height="100" fill="white" />
-      <path id="end" d="M38 50L9.5 66.4545V33.5455L38 50Z" fill-opacity="1" />
-      <g id="flash">
+      <g id="triangles">
         <path
-          id="first"
-          d="M36.5 49.134C37.1667 49.5189 37.1667 50.4811 36.5 50.866L11 65.5885C10.3333 65.9734 9.5 65.4922 9.5 64.7224V35.2776C9.5 34.5078 10.3333 34.0266 11 34.4115L36.5 49.134Z"
-          fill-opacity="0.5"
+          id="end"
+          d="M38 50L9.5 66.4545V33.5455L38 50Z"
+          fill-opacity="0.8"
         />
-        <path
-          id="third"
-          d="M33.5 47.4019C35.5 48.5566 35.5 51.4434 33.5 52.5981L14 63.8564C12 65.0111 9.5 63.5677 9.5 61.2583V38.7417C9.5 36.4323 12 34.9889 14 36.1436L33.5 47.4019Z"
-          fill-opacity="0.5"
-        />
-        <path
-          id="second"
-          d="M50 48.2679C51.3333 49.0377 51.3333 50.9623 50 51.7321L27.5 64.7224C26.1667 65.4922 24.5 64.53 24.5 62.9904V37.0096C24.5 35.47 26.1667 34.5078 27.5 35.2776L50 48.2679Z"
-          fill-opacity="0.5"
-        />
+        <g id="flash">
+          <path
+            id="first"
+            d="M36.5 49.134C37.1667 49.5189 37.1667 50.4811 36.5 50.866L11 65.5885C10.3333 65.9734 9.5 65.4922 9.5 64.7224V35.2776C9.5 34.5078 10.3333 34.0266 11 34.4115L36.5 49.134Z"
+            fill-opacity="0.5"
+          />
+          <path
+            id="second"
+            d="M50 48.2679C51.3333 49.0377 51.3333 50.9623 50 51.7321L27.5 64.7224C26.1667 65.4922 24.5 64.53 24.5 62.9904V37.0096C24.5 35.47 26.1667 34.5078 27.5 35.2776L50 48.2679Z"
+            fill-opacity="0.5"
+          />
+        </g>
       </g>
     </svg>
+
     <style>
       :root {
         --first-color: #0df7e9;
         --second-color: #04e9db;
-        --third-color: #04cde9;
         --end-color: #066aff;
       }
       svg {
@@ -51,9 +51,6 @@
       #second {
         fill: var(--second-color);
       }
-      #third {
-        fill: var(--third-color);
-      }
       #end {
         fill: var(--end-color);
       }
@@ -64,20 +61,42 @@
       #end {
         transition: all 1s ease;
       }
+      #end {
+        transform: translateX(-100%);
+      }
       svg:hover #first {
         transform: translateX(10%);
+        fill: cornflowerblue;
       }
       svg:hover #second {
         transform: translateX(20%);
-        opacity: 0;
-      }
-      svg:hover #third {
-        transform: translateX(30%);
         opacity: 0;
       }
       svg:hover #end {
         transform: translateX(0%);
       }
     </style>
+    <script>
+      const svg = document.getElementById("triangles");
+      svg.onclick = (e) => {
+        const colors = [
+          "red",
+          "orange",
+          "yellow",
+          "green",
+          "blue",
+          "purple",
+          "pink",
+          "#0df7e9",
+          "#04e9db",
+          "#066aff",
+        ];
+        const rando = () => colors[Math.floor(Math.random() * colors.length)];
+        document.documentElement.style.cssText = `
+        --first-color: ${rando()};
+        --second-color: ${rando()};
+        --end-color: ${rando()};`;
+      };
+    </script>
   </body>
 </html>
