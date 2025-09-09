@@ -1,5 +1,5 @@
 // return the longest string with the same letter
-let a = ["a", "b", "c", "ab", "eeeeee", "bb", "aac", "ccc", "dddd"]; // return "ccc";
+let a = ["a", "b", "c", "ab", "eeeeee", "bb", "aac", "ccc", "dddd"]; // return "eeeeeee";
 
 function longString(arr) {
   const sameLengthArr = arr.map(long);
